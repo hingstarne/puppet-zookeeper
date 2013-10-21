@@ -53,7 +53,7 @@ class zookeeper (
 
   # Class variables validation and management
 
-  validate_re($ensure, ['present','absent'], 'Valid values: present, absent.')
+  validate_re($ensure, ['present','absent','latest'], 'Valid values: present, absent, latest.')
   validate_bool($service_enable)
   validate_bool($config_dir_recurse)
   validate_bool($config_dir_purge)
