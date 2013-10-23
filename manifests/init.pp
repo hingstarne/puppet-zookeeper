@@ -62,7 +62,7 @@ class zookeeper (
 
   # Class variables validation and management
   if $zoo_ensemble {
-    file {"${zoo_datadir}/myid":
+    file {"${config_dir_path}/myid":
       ensure                 => present,
       content                => template("zookeeper/myid.erb"),
       purge                  => true;
