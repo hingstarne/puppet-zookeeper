@@ -7,3 +7,9 @@ dataDir=<%= @zoo_datadir %>
 clientPort=<%= @zoo_clientport %>
 autopurge.snapRetainCount=<%= @zoo_snapretain %>
 autopurge.purgeInterval=<%= @zoo_purgeinterval %>
+<% if @zoo_ensemble %>
+<% server_id = 0 -%>
+<% @zoo_ensemble.each do |var| -%>
+server.<%= server_id = server_id + 1%>=<%= var %>:2888:3888
+<% end -%>
+<% end %>
