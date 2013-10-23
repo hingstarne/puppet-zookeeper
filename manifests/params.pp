@@ -24,7 +24,7 @@ class zookeeper::params {
   }
 
   $config_file_path = $::osfamily ? {
-    default => '/etc/zookeeper/conf/zoo.conf',
+    default => '/etc/zookeeper/conf/zoo.cfg',
   }
 
   $config_file_mode = $::osfamily ? {
