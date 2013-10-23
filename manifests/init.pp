@@ -61,9 +61,12 @@ class zookeeper (
 
 
   # Class variables validation and management
-  file {"${zoo_datadir}/myid":
-    ensure                   => present,
-    content                  => template("zookeeper/myid.erb"),
+  if $zoo_ensemble {
+    file {"${zoo_datadir}/myid":
+      ensure                 => present,
+      content                => template("zookeeper/myid.erb"),
+      purge                  => true;
+    }
   }
   validate_re($ensure, ['present','absent','latest'], 'Valid values: present, absent, latest.')
   validate_bool($service_enable)
