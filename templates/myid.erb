@@ -1,0 +1,9 @@
+<% if @zoo_ensemble %>
+<% server_id = 0 -%>
+<% @zoo_ensemble.each do |var| -%>
+<% server_id = server_id + 1 -%>
+<% if (var == hostname) || (var == ipaddress) || (var == fqdn)  then %>
+<%= server_id %>
+<% end -%>
+<% end -%>
+<% end %>
