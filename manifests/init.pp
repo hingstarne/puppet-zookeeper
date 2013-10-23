@@ -145,26 +145,10 @@ class zookeeper (
 
   # Extra classes
 
-  if $zookeeper::dependency_class {
-    include $zookeeper::dependency_class
-  }
-
-  if $zookeeper::my_class {
-    include $zookeeper::my_class
-  }
-
-  if $zookeeper::monitor_class {
-    class { $zookeeper::monitor_class:
-      options_hash => $zookeeper::monitor_options_hash,
-      scope_hash   => {}, # TODO: Find a good way to inject class' scope
-    }
-  }
-
-  if $zookeeper::firewall_class {
-    class { $zookeeper::firewall_class:
-      options_hash => $zookeeper::firewall_options_hash,
-      scope_hash   => {},
-    }
+  if $zookeeper::install {
+    
+    include $zookeeper::install
+  
   }
 
 }
