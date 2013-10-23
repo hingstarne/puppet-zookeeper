@@ -1,1 +1,6 @@
-puppet
+Based on: 
+
+stdmod from Alessandro Franceschi, Dolf Schimmel, David Schmitt, Javier Bértoli
+https://github.com/stdmod
+zookeeper from Liang-Chi Hsieh
+http://www.viirya.org 

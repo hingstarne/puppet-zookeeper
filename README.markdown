@@ -32,6 +32,7 @@ Refer to http://github.com/stdmod/ for complete documentation on the common para
 
 ###Setup Requirements
 * PuppetLabs stdlib module
+* PuppetLabs apt module
 * Puppet version >= 2.7.x
 * Facter version >= 1.6.2
 
@@ -105,9 +106,8 @@ The module provides also a generic define to manage any zookeeper configuration 
 ##Operating Systems Support
 
 This is tested on these OS:
-- RedHat osfamily 5 and 6
 - Debian 6 and 7
-- Ubuntu 10.04 and 12.04
+
 
 
 ##Development
