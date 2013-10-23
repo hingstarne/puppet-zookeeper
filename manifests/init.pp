@@ -25,7 +25,7 @@ class zookeeper (
   $config_file_require       = 'Package[zookeeper]',
   $config_file_notify        = 'Service[zookeeper]',
   $config_file_source        = undef,
-  $config_file_template      = undef,
+  $config_file_template      = "zookeeper/zoo.erb",
   $config_file_content       = undef,
   $config_file_options_hash  = undef,
 
@@ -47,6 +47,15 @@ class zookeeper (
 
   $tcp_port                  = undef,
   $udp_port                  = undef,
+
+  $zoo_ticktime              = $zookeeper::params::zoo_ticktime,
+  $zoo_initlimit             = $zookeeper::params::zoo_initlimit,
+  $zoo_synclimit             = $zookeeper::params::zoo_synclimit,
+  $zoo_datadir               = $zookeeper::params::zoo_datadir,
+  $zoo_clientport            = $zookeeper::params::zoo_clientport,
+  $zoo_snapretain            = $zookeeper::params::zoo_snapretain,
+  $zoo_purgeinterval         = $zookeeper::params::zoo_purgeinterval,
+  $zoo_ensemble              = undef,
 
   ) inherits zookeeper::params {
 
@@ -103,11 +112,26 @@ class zookeeper (
   # Resources managed
 
   if $zookeeper::package_name {
-    package { $zookeeper::package_name:
+    case $::osfamily {
+    'Debian': { 
+       
+       class { 'zookeeper::debian::package':
+
+       ensure                   => $ensure, 
+       package_name             => $package_name,
+     
+      }
+    }
+    
+    default: {
+
+      package { $zookeeper::package_name:
       ensure   => $zookeeper::manage_package_ensure,
+    
+        }
+      }
     }
   }
-
   if $zookeeper::service_name {
     service { $zookeeper::service_name:
       ensure     => $zookeeper::manage_service_ensure,

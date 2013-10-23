@@ -4,6 +4,15 @@
 #
 class zookeeper::params {
 
+  $zoo_ticktime = "2000"
+  $zoo_initlimit = "10"
+  $zoo_synclimit = "5"
+  $zoo_datadir = $::osfamily ? {
+     default => '/var/lib/zookeeper',
+  }
+  $zoo_clientport = "2181"
+  $zoo_snapretain = "3"
+  $zoo_purgeinterval = "1"
   $package_name = $::osfamily ? {
     default => 'zookeeper',
   }
@@ -15,7 +24,7 @@ class zookeeper::params {
   }
 
   $config_file_path = $::osfamily ? {
-    default => '/etc/zookeeper/zookeeper.conf',
+    default => '/etc/zookeeper/conf/zoo.cfg',
   }
 
   $config_file_mode = $::osfamily ? {
@@ -31,7 +40,7 @@ class zookeeper::params {
   }
 
   $config_dir_path = $::osfamily ? {
-    default => '/etc/zookeeper',
+    default => '/etc/zookeeper/conf',
   }
 
   case $::osfamily {
