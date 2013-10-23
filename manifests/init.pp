@@ -61,7 +61,14 @@ class zookeeper (
 
 
   # Class variables validation and management
+  if $zoo_ensemble { 
 
+    file {"${zoo_datadir}/myid":
+    ensure                   => present,
+    template                 => template($config_file_template),
+    
+    }
+  }
   validate_re($ensure, ['present','absent','latest'], 'Valid values: present, absent, latest.')
   validate_bool($service_enable)
   validate_bool($config_dir_recurse)
