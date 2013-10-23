@@ -47,7 +47,7 @@ class zookeeper (
 
   $tcp_port                  = undef,
   $udp_port                  = undef,
-  
+
   $zoo_ticktime              = $zookeeper::params::zoo_ticktime,
   $zoo_initlimit             = $zookeeper::params::zoo_initlimit,
   $zoo_synclimit             = $zookeeper::params::zoo_synclimit,
@@ -55,6 +55,7 @@ class zookeeper (
   $zoo_clientport            = $zookeeper::params::zoo_clientport,
   $zoo_snapretain            = $zookeeper::params::zoo_snapretain,
   $zoo_purgeinterval         = $zookeeper::params::zoo_purgeinterval,
+  $zoo_ensemble              = undef,
 
   ) inherits zookeeper::params {
 
