@@ -103,10 +103,25 @@ class zookeeper (
   # Resources managed
 
   if $zookeeper::package_name {
-    package { $zookeeper::package_name:
-      ensure   => $zookeeper::manage_package_ensure,
+    case $::osfamily {
+    'Debian': { 
+       
+       class { 'zookeeper::debian::package':
+
+       ensure                   => $ensure, 
+       package_name             => $package_name,
+     
+      }
     }
-  }
+    
+    default: {
+
+      package { $zookeeper::package_name:
+      ensure   => $zookeeper::manage_package_ensure,
+    
+        }
+      }
+    }
 
   if $zookeeper::service_name {
     service { $zookeeper::service_name:
