@@ -26,4 +26,9 @@ class zookeeper::debian::package (
     install_options          => "-t unstable";
     
     }
+    file {'/etc/init.d/zookeeper':
+    ensure                   => $ensure,
+    source                   => "puppet:///modules/zookeeper/debianinit",
+    mode                     => "755", 
+    }
 }
