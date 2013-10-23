@@ -122,7 +122,7 @@ class zookeeper (
         }
       }
     }
-
+  }
   if $zookeeper::service_name {
     service { $zookeeper::service_name:
       ensure     => $zookeeper::manage_service_ensure,
