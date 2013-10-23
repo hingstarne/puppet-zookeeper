@@ -4,6 +4,15 @@
 #
 class zookeeper::params {
 
+  $zoo_ticktime = "2000"
+  $zoo_initlimit = "10"
+  $zoo_synclimit = "5"
+  $zoo_datadir = $::osfamily ? {
+     default => '/var/lib/zookeeper',
+  }
+  $zoo_clientport = "2181"
+  $zoo_snapretain = "3"
+  $zoo_purgeinterval = "1"
   $package_name = $::osfamily ? {
     default => 'zookeeper',
   }
