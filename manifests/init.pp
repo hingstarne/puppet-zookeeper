@@ -53,7 +53,7 @@ class zookeeper (
 
   # Class variables validation and management
 
-  validate_re($ensure, ['present','absent'], 'Valid values: present, absent.')
+  validate_re($ensure, ['present','absent','latest'], 'Valid values: present, absent, latest.')
   validate_bool($service_enable)
   validate_bool($config_dir_recurse)
   validate_bool($config_dir_purge)
@@ -145,26 +145,10 @@ class zookeeper (
 
   # Extra classes
 
-  if $zookeeper::dependency_class {
-    include $zookeeper::dependency_class
-  }
-
-  if $zookeeper::my_class {
-    include $zookeeper::my_class
-  }
-
-  if $zookeeper::monitor_class {
-    class { $zookeeper::monitor_class:
-      options_hash => $zookeeper::monitor_options_hash,
-      scope_hash   => {}, # TODO: Find a good way to inject class' scope
-    }
-  }
-
-  if $zookeeper::firewall_class {
-    class { $zookeeper::firewall_class:
-      options_hash => $zookeeper::firewall_options_hash,
-      scope_hash   => {},
-    }
+  if $zookeeper::install {
+    
+    include $zookeeper::install
+  
   }
 
 }

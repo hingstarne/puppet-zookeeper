@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'zookeeper' do
 
   context 'Supported OS - ' do
-    ['Debian', 'RedHat'].each do |osfamily|
+    ['Debian'].each do |osfamily|
       describe "#{osfamily} Standard installation" do
         let(:params) {{ }}
         let(:facts) {{

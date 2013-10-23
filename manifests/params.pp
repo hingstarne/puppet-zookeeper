@@ -7,7 +7,9 @@ class zookeeper::params {
   $package_name = $::osfamily ? {
     default => 'zookeeper',
   }
-
+  $debmirror = $::osfamily ? {
+    default => 'http://http.debian.net/debian/',
+  }
   $service_name = $::osfamily ? {
     default => 'zookeeper',
   }
@@ -33,7 +35,7 @@ class zookeeper::params {
   }
 
   case $::osfamily {
-    'Debian','RedHat','Amazon': { }
+    'Debian': { }
     default: {
       fail("${::operatingsystem} not supported. Review params.pp for extending support.")
     }
