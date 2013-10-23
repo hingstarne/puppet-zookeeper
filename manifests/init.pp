@@ -172,14 +172,5 @@ class zookeeper (
     }
   }
 
-
-  # Extra classes
-
-  if $zookeeper::install {
-    
-    include $zookeeper::install
-  
-  }
-
 }
 
