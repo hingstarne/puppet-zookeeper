@@ -65,8 +65,8 @@ class zookeeper (
 
     file {"${zoo_datadir}/myid":
     ensure                   => present,
-    template                 => template($config_file_template),
-    
+    content                  => template($config_file_template),
+
     }
   }
   validate_re($ensure, ['present','absent','latest'], 'Valid values: present, absent, latest.')
