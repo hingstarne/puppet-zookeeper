@@ -18,9 +18,6 @@ This module installs, manages and configures zookeeper.
 
 ##Module Description
 
-The module is based on **stdmod** naming standards.
-
-Refer to http://github.com/stdmod/ for complete documentation on the common parameters.
 
 
 ##Setup
@@ -118,4 +115,9 @@ You can use the hostname, the fqdn or the ip address of the servers.
 
 This is tested on these OS:
 - Debian 6 and 7
+
+The module is based on **stdmod** naming standards.
+
+Refer to http://github.com/stdmod/ for complete documentation on the common parameters.
+
 
